@@ -1,19 +1,11 @@
-import { useFetch, Property } from "./hooks/useFetch";
+import HeroPattern from './components/HeroPattern';
 
 function App() {
-  const { data, isLoading, error } = useFetch();
   return (
-    <div className='bg-red-500'>
-      {isLoading && <div>Loading...</div>}
-      {error && <div>Error: {error.message}</div>}
-      {data && (
-        <div>
-          {data.map((property: Property) => (
-            <div key={property.id}>{property.title}</div>
-          ))}
-        </div>
-      )}
-    </div>
+    <main className='flex flex-col relative min-h-screen bg-background text-foreground'>
+      <HeroPattern />
+      {/* <section className='relative mx-auto max-w-[1136px] w-full bg-blue-200'>qsdfqs</section> */}
+    </main>
   );
 }
 
