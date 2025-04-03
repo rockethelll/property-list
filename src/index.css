@@ -10,7 +10,7 @@
   --background: #121826;
   --foreground: #F2F9FE;
   --star: #F6C768;
-  --border: #4A5567;
+  --border-1: #4A5567;
   --blue-switch: #4E80EE;
   --card-text: #D2D5DA;
   --superhost: #20293A;
@@ -56,7 +56,7 @@
   --color-foreground: var(--foreground);
   --color-star: var(--star);
   --color-blue-switch: var(--blue-switch);
-  --color-border: var(--border);
+  --color-border-1: var(--border-1);
   --color-card-text: var(--card-text);
   --color-superhost: var(--superhost);
   --color-card: var(--card);

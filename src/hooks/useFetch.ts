@@ -18,20 +18,25 @@ export type Property = {
     bedroom: number;
   };
   image: string;
-}
+};
+const getProperties = async (filters?: string) => {
+  if (USE_MOCK) return mockData;
 
-export const useFetch = () => {
+  const response = await fetch(REAL_API_URL);
+  if (filters) {
+    const data = await response.json();
+    return data.filter((property: Property) => property.location.includes(filters));
+  }
+
+  if (!response.ok) throw new Error('Failed to fetch data');
+
+  return response.json();
+};
+
+export const useFetch = (filters?: string) => {
   const { data, isLoading, error } = useQuery({
-    queryKey: ['properties'],
-    queryFn: async () => {
-      if (USE_MOCK) return mockData;
-
-      const response = await fetch(REAL_API_URL);
-
-      if (!response.ok) throw new Error('Failed to fetch data');
-
-      return response.json();
-    },
+    queryKey: ['properties', filters],
+    queryFn: async () => getProperties(filters),
     staleTime: Infinity, // Never re-fetch data
     gcTime: Infinity, // Changed from cacheTime to gcTime
   });
