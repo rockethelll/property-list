@@ -10,7 +10,7 @@ const HeroPattern = () => {
         <img
           src={heroPatternMobile}
           alt='Hero Pattern'
-          className='w-full lg:h-[620px] h-[400px] object-cover sm:object-bottom md:object-center'
+          className='w-full lg:h-[620px] h-[400px] object-cover'
         />
       </picture>
       <div className='absolute top-[108px] lg:top-[180px] left-16 md:left-28 lg:left-[140px] '>
