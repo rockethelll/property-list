@@ -19,26 +19,22 @@ export type Property = {
   };
   image: string;
 };
-const getProperties = async (filters?: string) => {
+
+const getProperties = async () => {
   if (USE_MOCK) return mockData;
 
   const response = await fetch(REAL_API_URL);
-  if (filters) {
-    const data = await response.json();
-    return data.filter((property: Property) => property.location.includes(filters));
-  }
-
   if (!response.ok) throw new Error('Failed to fetch data');
 
   return response.json();
 };
 
-export const useFetch = (filters?: string) => {
+export const useFetch = () => {
   const { data, isLoading, error } = useQuery({
-    queryKey: ['properties', filters],
-    queryFn: async () => getProperties(filters),
-    staleTime: Infinity, // Never re-fetch data
-    gcTime: Infinity, // Changed from cacheTime to gcTime
+    queryKey: ['properties'],
+    queryFn: getProperties,
+    staleTime: Infinity,
+    gcTime: Infinity,
   });
 
   return { data, isLoading, error };

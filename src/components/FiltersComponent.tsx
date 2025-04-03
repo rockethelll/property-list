@@ -11,33 +11,44 @@ import { Switch } from './ui/switch';
 import { Label } from './ui/label';
 import { Button } from './ui/button';
 import { filtersButtons } from '@/constants/filters';
+import { usePropertyStore } from '@/state/propertyStore';
 
 const FiltersComponent = () => {
+  const {
+    isSuperhost,
+    setIsSuperhost,
+    selectedLocation,
+    setSelectedLocation,
+    selectedBedroom,
+    setSelectedBedroom,
+  } = usePropertyStore();
+
   return (
-    <div className='absolute top-[360px] left-[50%] translate-x-[-50%] flex flex-col items-center justify-center px-10 py-8 border bg-superhost rounded-xl border-border-1'>
-      <div className='grid grid-cols-2 gap-3 w-[250px] mb-6 text-foreground'>
-        {filtersButtons.map(
-          (filterButton: { label: string; onClick: () => void }, index: number) => (
-            <Button
-              key={filterButton.label}
-              variant='ghost'
-              className={`px-3 py-2 cursor-pointer hover:bg-white/15 rounded-xl ${
-                index === filtersButtons.length - 1 ? 'col-span-2 sm:col-span-1' : ''
-              }`}
-              onClick={filterButton.onClick}
-            >
-              {filterButton.label}
-            </Button>
-          ),
-        )}
+    <section
+      aria-label='Property filters'
+      className='absolute top-[360px] lg:h-28 lg:top-[560px] left-[50%] translate-x-[-50%] flex lg:flex-row flex-col items-center justify-center px-10 py-8 border bg-superhost rounded-xl border-border-1 lg:max-w-[1136px] lg:w-[90%] z-10'
+    >
+      <div className='grid grid-cols-2 gap-3 w-full max-w-[250px] lg:max-w-none lg:mb-0 mb-6 text-foreground lg:flex lg:flex-row lg:gap-2 lg:flex-wrap'>
+        {filtersButtons.map((filterButton, index) => (
+          <Button
+            key={filterButton.label}
+            variant={selectedLocation === filterButton.location ? 'default' : 'ghost'}
+            className={`px-3 py-2 cursor-pointer hover:bg-white/15 rounded-xl ${
+              index === filtersButtons.length - 1 ? 'col-span-2' : ''
+            }`}
+            onClick={() => setSelectedLocation(filterButton.location)}
+          >
+            {filterButton.label}
+          </Button>
+        ))}
       </div>
-      <div className='flex items-center mb-5 space-x-2'>
-        <Switch id='superhost' />
+      <div className='flex items-center mb-5 space-x-2 lg:mb-0 lg:pr-5'>
+        <Switch id='superhost' checked={isSuperhost} onCheckedChange={setIsSuperhost} />
         <Label htmlFor='superhost'>Superhost</Label>
       </div>
-      <Select>
-        <SelectTrigger className='w-[180px]'>
-          <SelectValue placeholder='Property Type' />
+      <Select value={selectedBedroom} onValueChange={setSelectedBedroom}>
+        <SelectTrigger className='w-[180px] px-6'>
+          <SelectValue placeholder='Bedrooms' />
         </SelectTrigger>
         <SelectContent
           position='popper'
@@ -46,12 +57,13 @@ const FiltersComponent = () => {
         >
           <SelectGroup>
             <SelectLabel>Bedrooms</SelectLabel>
-            <SelectItem value='1'>1</SelectItem>
-            <SelectItem value='2'>2</SelectItem>
+            <SelectItem value='all'>All Bedrooms</SelectItem>
+            <SelectItem value='1'>1 Bedroom</SelectItem>
+            <SelectItem value='2'>2 Bedrooms</SelectItem>
           </SelectGroup>
         </SelectContent>
       </Select>
-    </div>
+    </section>
   );
 };
 

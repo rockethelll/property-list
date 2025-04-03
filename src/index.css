@@ -8,13 +8,13 @@
   --outfit: 'Outfit', sans-serif;
   --radius: 0.625rem;
   --background: #121826;
-  --foreground: #F2F9FE;
-  --star: #F6C768;
-  --border-1: #4A5567;
-  --blue-switch: #4E80EE;
-  --card-text: #D2D5DA;
-  --superhost: #20293A;
-  --card-hover: #20293AF2;
+  --foreground: #f2f9fe;
+  --star: #f6c768;
+  --border-1: #4a5567;
+  --blue-switch: #4e80ee;
+  --card-text: #d2d5da;
+  --superhost: #20293a;
+  --card-hover: #20293af2;
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
@@ -98,4 +98,28 @@
   body {
     @apply bg-background text-foreground font-outfit;
   }
+}
+
+html {
+  overflow-y: scroll;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #888 transparent;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 20px;
+  border: 2px solid transparent;
 }

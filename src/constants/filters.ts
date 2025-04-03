@@ -1,37 +1,27 @@
 type FilterButton = {
   label: string;
-  onClick: () => void;
+  location: 'All Stay' | 'Norway' | 'Finland' | 'Sweden' | 'Switzerland';
 };
 
 export const filtersButtons: FilterButton[] = [
   {
     label: 'All Stay',
-    onClick: () => {
-      console.log('clicked');
-    },
+    location: 'All Stay',
   },
   {
     label: 'Norway',
-    onClick: () => {
-      console.log('clicked Norway');
-    },
+    location: 'Norway',
   },
   {
     label: 'Finland',
-    onClick: () => {
-      console.log('clicked Finland');
-    },
+    location: 'Finland',
   },
   {
     label: 'Sweden',
-    onClick: () => {
-      console.log('clicked Sweden');
-    },
+    location: 'Sweden',
   },
   {
     label: 'Switzerland',
-    onClick: () => {
-      console.log('clicked Switzerland');
-    },
+    location: 'Switzerland',
   },
 ];
