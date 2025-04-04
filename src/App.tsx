@@ -1,7 +1,8 @@
 import HeroPattern from './components/HeroPattern';
-import { Property, useFetch } from './hooks/useFetch';
+import { useFetch } from './hooks/useFetch';
 import { usePropertyStore } from './state/propertyStore';
 import FiltersComponent from './components/FiltersComponent';
+import PropertyCard from './components/PropertyCard';
 
 function App() {
   const { filterProperties } = usePropertyStore();
@@ -13,16 +14,13 @@ function App() {
     <main className='relative flex flex-col items-center min-h-screen bg-background text-foreground'>
       <HeroPattern />
       <FiltersComponent />
-      <section className='relative mx-auto max-w-[1136px] w-70% mt-40'>
-        {filteredProperties.map((property: Property) => (
-          <div key={property.id}>
-            <h2>Title: {property.title}</h2>
-            <p>Location: {property.location}</p>
-            <p>Bedrooms: {property.capacity.bedroom}</p>
-            <p>Superhost: {property.superhost ? 'Superhost' : 'Not Superhost'}</p>
-            <hr />
-          </div>
+      <section className='max-w-[1136px] mt-70 sm:mt-40 px-10 lg:mt-24'>
+        <h2 className='text-2xl font-bold mb-8'>Over 200 Stays</h2>
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[72px] lg:gap-8 items-center justify-center'>
+        {filteredProperties.map((property) => (
+          <PropertyCard key={property.id} property={property} />
         ))}
+      </div>
       </section>
     </main>
   );

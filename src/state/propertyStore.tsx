@@ -1,5 +1,5 @@
+import { Property } from '@/lib/types';
 import { create } from 'zustand';
-import { Property } from '@/hooks/useFetch';
 import { devtools } from 'zustand/middleware';
 
 type Location = 'All Stay' | 'Norway' | 'Finland' | 'Sweden' | 'Switzerland';
