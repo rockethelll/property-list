@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { Property } from '@/hooks/useFetch';
+import { devtools } from 'zustand/middleware';
 
 type Location = 'All Stay' | 'Norway' | 'Finland' | 'Sweden' | 'Switzerland';
 type Bedroom = 'all' | '1' | '2';
@@ -14,26 +15,28 @@ type PropertyStore = {
   filterProperties: (properties: Property[]) => Property[];
 };
 
-export const usePropertyStore = create<PropertyStore>((set, get) => ({
-  isSuperhost: false,
-  setIsSuperhost: (value) => {
-    set({ isSuperhost: value });
-  },
-  selectedLocation: 'All Stay',
-  setSelectedLocation: (location) => set({ selectedLocation: location }),
-  selectedBedroom: 'all',
-  setSelectedBedroom: (bedroom) => set({ selectedBedroom: bedroom }),
-  filterProperties: (properties) => {
-    const { selectedLocation, isSuperhost, selectedBedroom } = get();
+export const usePropertyStore = create<PropertyStore>()(
+  devtools((set, get) => ({
+    isSuperhost: false,
+    setIsSuperhost: (value) => {
+      set({ isSuperhost: value });
+    },
+    selectedLocation: 'All Stay',
+    setSelectedLocation: (location) => set({ selectedLocation: location }),
+    selectedBedroom: 'all',
+    setSelectedBedroom: (bedroom) => set({ selectedBedroom: bedroom }),
+    filterProperties: (properties) => {
+      const { selectedLocation, isSuperhost, selectedBedroom } = get();
 
-    return properties.filter((property) => {
-      const locationMatch =
-        selectedLocation === 'All Stay' || property.location === selectedLocation;
-      const superhostMatch = !isSuperhost || property.superhost;
-      const bedroomMatch =
-        selectedBedroom === 'all' || property.capacity.bedroom === Number(selectedBedroom);
+      return properties.filter((property) => {
+        const locationMatch =
+          selectedLocation === 'All Stay' || property.location === selectedLocation;
+        const superhostMatch = !isSuperhost || property.superhost;
+        const bedroomMatch =
+          selectedBedroom === 'all' || property.capacity.bedroom === Number(selectedBedroom);
 
-      return locationMatch && superhostMatch && bedroomMatch;
-    });
-  },
-}));
+        return locationMatch && superhostMatch && bedroomMatch;
+      });
+    },
+  })),
+);
