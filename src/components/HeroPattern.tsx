@@ -14,7 +14,7 @@ const HeroPattern = () => {
         />
       </picture>
       <div className='absolute top-[108px] lg:top-[180px] left-16 md:left-28 lg:left-[140px] '>
-        <h1 className='lg:text-[4rem] text-[2.5rem] text-background font-semibold w-[280px] lg:w-[500px]'>
+        <h1 className='lg:text-[4rem] text-[2.5rem] text-background font-semibold w-[280px] lg:w-[500px] leading-20 mb-1'>
           Peace, nature, dream
         </h1>
         <p className='text-background text-2xl w-[280px] lg:w-[400px] text-shadow-[0_0_6px_rgba(255,255,255,1)]'>

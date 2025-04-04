@@ -14,14 +14,8 @@ import { filtersButtons } from '@/constants/filters';
 import { usePropertyStore } from '@/state/propertyStore';
 
 const FiltersComponent = () => {
-  const {
-    isSuperhost,
-    setIsSuperhost,
-    selectedLocation,
-    setSelectedLocation,
-    selectedBedroom,
-    setSelectedBedroom,
-  } = usePropertyStore();
+  const { isSuperhost, setIsSuperhost, selectedLocation, setSelectedLocation, setSelectedBedroom } =
+    usePropertyStore();
 
   return (
     <section
@@ -33,7 +27,7 @@ const FiltersComponent = () => {
           <Button
             key={filterButton.label}
             variant={selectedLocation === filterButton.location ? 'default' : 'ghost'}
-            className={`px-3 py-2 cursor-pointer hover:bg-white/40 rounded-xl ${
+            className={`px-3 py-2 cursor-pointer hover:bg-white/40 rounded-lg ${
               index === filtersButtons.length - 1 ? 'col-span-2' : ''
             }`}
             onClick={() => setSelectedLocation(filterButton.location)}
@@ -44,12 +38,17 @@ const FiltersComponent = () => {
       </div>
       <div className='flex flex-col items-center gap-4 sm:flex-row'>
         <div className='flex items-center space-x-2 lg:mb-0 lg:pr-5'>
-          <Switch id='superhost' checked={isSuperhost} onCheckedChange={setIsSuperhost} />
+          <Switch
+            id='superhost'
+            checked={isSuperhost}
+            onCheckedChange={setIsSuperhost}
+            className='w-12 h-6'
+          />
           <Label htmlFor='superhost'>Superhost</Label>
         </div>
-        <Select value={selectedBedroom} onValueChange={setSelectedBedroom}>
+        <Select defaultValue='all' onValueChange={setSelectedBedroom}>
           <SelectTrigger className='w-[180px] px-6'>
-            <SelectValue placeholder='Bedrooms' />
+            <SelectValue placeholder='Property type' />
           </SelectTrigger>
           <SelectContent
             position='popper'
@@ -58,7 +57,7 @@ const FiltersComponent = () => {
           >
             <SelectGroup>
               <SelectLabel>Bedrooms</SelectLabel>
-              <SelectItem value='all'>All Bedrooms</SelectItem>
+              <SelectItem value='all'>All</SelectItem>
               <SelectItem value='1'>1</SelectItem>
               <SelectItem value='2'>2</SelectItem>
             </SelectGroup>
