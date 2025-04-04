@@ -42,27 +42,27 @@ const FiltersComponent = () => {
           </Button>
         ))}
       </div>
-      <div className='flex flex-col sm:flex-row items-center gap-4'>
+      <div className='flex flex-col items-center gap-4 sm:flex-row'>
         <div className='flex items-center space-x-2 lg:mb-0 lg:pr-5'>
           <Switch id='superhost' checked={isSuperhost} onCheckedChange={setIsSuperhost} />
           <Label htmlFor='superhost'>Superhost</Label>
-      </div>
-      <Select value={selectedBedroom} onValueChange={setSelectedBedroom}>
-        <SelectTrigger className='w-[180px] px-6'>
-          <SelectValue placeholder='Bedrooms' />
-        </SelectTrigger>
-        <SelectContent
-          position='popper'
-          side='bottom'
-          className='bg-superhost w-[180px] rounded-md border border-border-1'
-        >
-          <SelectGroup>
-            <SelectLabel>Bedrooms</SelectLabel>
-            <SelectItem value='all'>All Bedrooms</SelectItem>
-            <SelectItem value='1'>1</SelectItem>
-            <SelectItem value='2'>2</SelectItem>
-          </SelectGroup>
-        </SelectContent>
+        </div>
+        <Select value={selectedBedroom} onValueChange={setSelectedBedroom}>
+          <SelectTrigger className='w-[180px] px-6'>
+            <SelectValue placeholder='Bedrooms' />
+          </SelectTrigger>
+          <SelectContent
+            position='popper'
+            side='bottom'
+            className='bg-superhost w-[180px] rounded-md border border-border-1'
+          >
+            <SelectGroup>
+              <SelectLabel>Bedrooms</SelectLabel>
+              <SelectItem value='all'>All Bedrooms</SelectItem>
+              <SelectItem value='1'>1</SelectItem>
+              <SelectItem value='2'>2</SelectItem>
+            </SelectGroup>
+          </SelectContent>
         </Select>
       </div>
     </section>

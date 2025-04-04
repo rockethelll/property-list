@@ -21,8 +21,8 @@ const PropertyCard = ({ property }: PropertyCardProps) => {
         {property.superhost && <SuperHost />}
       </div>
       <div className='flex flex-col p-5'>
-        <CardTitle className='line-clamp-1 mb-2'>{property.title}</CardTitle>
-        <CardContent className='text-muted-foreground p-0'>
+        <CardTitle className='mb-2 line-clamp-1'>{property.title}</CardTitle>
+        <CardContent className='p-0 text-muted-foreground'>
           <p className=''>{property.description}</p>
         </CardContent>
         <CardDescription className='flex gap-2 my-4'>
@@ -46,7 +46,7 @@ const PropertyCard = ({ property }: PropertyCardProps) => {
         <hr className='border-border-1' />
         <CardFooter className='flex justify-between p-0 mt-4'>
           <p className='text-foreground text-[20px] font-bold'>
-            $ {property.price} <span className='text-muted-foreground text-sm'>/night</span>
+            $ {property.price} <span className='text-sm text-muted-foreground'>/night</span>
           </p>
           <div className='flex items-center gap-2'>
             <img src={star} alt='Star icon' />
