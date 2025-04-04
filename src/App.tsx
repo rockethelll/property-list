@@ -18,7 +18,7 @@ function App() {
       <section className='max-w-[1136px] mt-70 sm:mt-40 px-10 lg:mt-24'>
         <h2 className='mb-8 text-2xl font-bold'>Over 200 Stays</h2>
 
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[72px] lg:gap-8 items-center justify-center'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[72px] lg:gap-x-8 lg:gap-y-[72px] items-center justify-center'>
           {filteredProperties.map((property) => (
             <PropertyCard key={property.id} property={property} />
           ))}
