@@ -22,7 +22,7 @@ const FiltersComponent = () => {
       aria-label='Property filters'
       className='absolute top-[360px] lg:h-28 lg:top-[560px] left-[50%] translate-x-[-50%] flex lg:flex-row flex-col items-center justify-center px-10 py-8 border bg-superhost rounded-xl border-border-1 lg:max-w-[1136px] lg:w-[90%] z-10'
     >
-      <div className='grid grid-cols-2 gap-3 w-full max-w-[250px] sm:max-w-none lg:max-w-none lg:mb-0 mb-6 text-foreground sm:flex sm:flex-row lg:gap-2 lg:flex-wrap'>
+      <div className='grid grid-cols-2 gap-3 w-full max-w-[250px] sm:max-w-none lg:max-w-none lg:mb-0 mb-6 text-foreground sm:flex sm:flex-row lg:gap-2 lg:flex-wrap mx-10 md:mx-0'>
         {filtersButtons.map((filterButton, index) => (
           <Button
             key={filterButton.label}

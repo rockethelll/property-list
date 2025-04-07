@@ -11,7 +11,7 @@ type PropertyCardProps = {
 
 const PropertyCard = ({ property }: PropertyCardProps) => {
   return (
-    <Card key={property.id} className='w-[340px] min-h-[360px] flex flex-col'>
+    <Card key={property.id} className='w-[320px] min-h-[350px] flex flex-col'>
       <div className='relative'>
         <img
           src={property.image}
@@ -22,7 +22,7 @@ const PropertyCard = ({ property }: PropertyCardProps) => {
       </div>
       <div className='flex flex-col px-5 pb-5'>
         <CardTitle className='mb-2 line-clamp-1'>{property.title}</CardTitle>
-        <CardContent className='p-0 text-foreground text-sm'>
+        <CardContent className='p-0 text-sm text-foreground'>
           <p className=''>{property.description}</p>
         </CardContent>
         <CardDescription className='flex gap-2 my-4'>
