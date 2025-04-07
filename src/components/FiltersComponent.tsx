@@ -42,12 +42,12 @@ const FiltersComponent = () => {
             id='superhost'
             checked={isSuperhost}
             onCheckedChange={setIsSuperhost}
-            className='w-12 h-6'
+            className='w-12 h-6 mr-2'
           />
           <Label htmlFor='superhost'>Superhost</Label>
         </div>
-        <Select defaultValue='all' onValueChange={setSelectedBedroom}>
-          <SelectTrigger className='w-[180px] px-6'>
+        <Select onValueChange={setSelectedBedroom}>
+          <SelectTrigger className='w-[180px] px-6 py-3'>
             <SelectValue placeholder='Property type' />
           </SelectTrigger>
           <SelectContent

@@ -11,7 +11,7 @@ type PropertyCardProps = {
 
 const PropertyCard = ({ property }: PropertyCardProps) => {
   return (
-    <Card key={property.id} className='w-[320px] min-h-[480px] flex flex-col'>
+    <Card key={property.id} className='w-[340px] min-h-[360px] flex flex-col'>
       <div className='relative'>
         <img
           src={property.image}
@@ -20,15 +20,15 @@ const PropertyCard = ({ property }: PropertyCardProps) => {
         />
         {property.superhost && <SuperHost />}
       </div>
-      <div className='flex flex-col p-5'>
+      <div className='flex flex-col px-5 pb-5'>
         <CardTitle className='mb-2 line-clamp-1'>{property.title}</CardTitle>
-        <CardContent className='p-0 text-muted-foreground'>
+        <CardContent className='p-0 text-foreground text-sm'>
           <p className=''>{property.description}</p>
         </CardContent>
         <CardDescription className='flex gap-2 my-4'>
           <div className='flex items-center gap-2'>
             <img src={home} alt='House icon' />
-            <p className='text-muted-foreground text-[12px] '>
+            <p className='text-foreground text-[12px] '>
               {property.capacity.bedroom > 1
                 ? `${property.capacity.bedroom} bedrooms`
                 : `${property.capacity.bedroom} bedroom`}
@@ -36,7 +36,7 @@ const PropertyCard = ({ property }: PropertyCardProps) => {
           </div>
           <div className='flex items-center gap-2'>
             <img src={user} alt='User icon' />
-            <p className='text-muted-foreground text-[12px] '>
+            <p className='text-foreground text-[12px] '>
               {property.capacity.people > 1
                 ? `${property.capacity.people} guests`
                 : `${property.capacity.people} guest`}
@@ -46,7 +46,7 @@ const PropertyCard = ({ property }: PropertyCardProps) => {
         <hr className='border-border-1' />
         <CardFooter className='flex justify-between p-0 mt-4'>
           <p className='text-foreground text-[20px] font-bold'>
-            $ {property.price} <span className='text-sm text-muted-foreground'>/night</span>
+            $ {property.price} <span className='text-sm text-foreground'>/night</span>
           </p>
           <div className='flex items-center gap-2'>
             <img src={star} alt='Star icon' />
